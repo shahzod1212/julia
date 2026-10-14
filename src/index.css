@@ -1,0 +1,60 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Playfair Display", serif;
+  --font-body: "Poppins", sans-serif;
+}
+
+html, body { margin: 0; background: #1a0b2e; overflow-x: hidden; }
+body { font-family: var(--font-body); -webkit-tap-highlight-color: transparent; }
+
+.bg-animated {
+  background: linear-gradient(120deg, #ff758c, #ff7eb3, #7873f5, #4facfe, #f6d365, #ff758c);
+  background-size: 400% 400%;
+  animation: gradientShift 14s ease infinite;
+}
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.shimmer-text {
+  background: linear-gradient(90deg, #fff, #ffd1ec, #fff6b7, #fff);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer 5s linear infinite;
+}
+@keyframes shimmer { to { background-position: 300% 0; } }
+
+.ring-spin {
+  border-radius: 9999px;
+  background: conic-gradient(#ff758c, #f6d365, #4facfe, #7873f5, #ff758c);
+  animation: spin 6s linear infinite;
+  filter: blur(2px);
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.animate-pop { animation: pop .8s cubic-bezier(.34,1.56,.64,1) both; }
+@keyframes pop { from { opacity: 0; transform: scale(.3) translateY(30px); } to { opacity: 1; transform: none; } }
+
+.animate-fade-up { animation: fadeUp 1s ease both; }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: none; } }
+
+.animate-float { animation: float 2.4s ease-in-out infinite; }
+@keyframes float { 50% { transform: translateY(12px); } }
+
+.animate-beat { animation: beat 1.4s ease-in-out infinite; }
+@keyframes beat { 0%,100% { transform: scale(1); } 15% { transform: scale(1.12); } 30% { transform: scale(1); } 45% { transform: scale(1.08); } }
+
+.heart-rise { position: fixed; bottom: -40px; pointer-events: none; z-index: 5; animation: rise linear infinite; }
+@keyframes rise {
+  0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+  10% { opacity: .9; }
+  100% { transform: translateY(-115vh) rotate(40deg); opacity: 0; }
+}
+
+.reveal { opacity: 0; transform: translateY(50px) scale(.96); transition: all .9s cubic-bezier(.2,.7,.2,1); }
+.reveal.show { opacity: 1; transform: none; }
